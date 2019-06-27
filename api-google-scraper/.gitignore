@@ -1,2 +1,13 @@
 # IDE
 .idea/
+
+# dependencies
+node_modules
+
+# production
+dist
+
+#misc
+npm-debug.log
+.env
+.DS_Store
