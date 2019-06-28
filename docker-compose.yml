@@ -1,0 +1,46 @@
+version: "3"
+services:
+  client:
+    image: node:11-alpine
+    restart: always
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./react-google-scraper:/app
+    links:
+      - api
+    networks:
+      - google-scraper-network
+  command: ["npm", "start"]
+  api:
+    image: node:11-alpine
+    restart: always
+    ports:
+      - 9000:9000
+    working_dir: /app
+    volumes:
+      - ./api-google-scraper:/app
+    depends_on:
+      - pgsql
+    networks:
+      - google-scraper-network
+    command: ["npm", "run start"]
+  pgsql:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: scraper
+      POSTGRES_PASSWORD: scraper
+      POSTGRES_DB: scraper
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - google-scraper-network
+
+networks:
+  google-scraper-network:
+    driver: bridge
+volumes:
+  db-data:
