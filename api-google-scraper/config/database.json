@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "scraper",
+    "password": "scraper",
+    "database": "scraper",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "scraper",
+    "password": "scraper",
+    "database": "scraper",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "scraper",
+    "password": "scraper",
+    "database": "scraper",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
