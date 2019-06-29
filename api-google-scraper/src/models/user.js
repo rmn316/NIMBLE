@@ -1,28 +1,21 @@
-import Sequelize, { Model } from 'sequelize'
-
-class User extends Model {
-}
-
-User.init(
-  {
+export default function(sequelize, DataType) {
+  const User = sequelize.define('User', {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataType.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
     email: {
-      type: Sequelize.STRING,
+      type: DataType.STRING,
       allowNull: false
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataType.STRING,
       allowNull: false
     }
-  },
-  {
-    modelName: 'user',
+  }, {
     tableName: 'users',
-    sequelize: Sequelize,
+    timestamps: false,
   });
-
-export default User;
+  return User;
+}

@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
     "@babel/register": "^7.4.4",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
