@@ -8,7 +8,7 @@ class UserAuthentication {
    * @param {string} password
    * @returns {string} returns hashed password
    */
-  async static hashPassword (password) {
+  static async hashPassword (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
   }
 
@@ -18,7 +18,7 @@ class UserAuthentication {
    * @param {string} password
    * @returns {Boolean} return true | false
    */
-  async static comparePassword (hashPassword, password) {
+  static async comparePassword (hashPassword, password) {
     return bcrypt.compare(password, hashPassword);
   }
 
@@ -27,7 +27,7 @@ class UserAuthentication {
    * @param {string} email
    * @returns {boolean} return true | false
    */
-  async static isValidEmail (email) {
+  static async isValidEmail (email) {
     return /\S+@\S+\.\S+/.test(email);
   }
 
@@ -36,7 +36,7 @@ class UserAuthentication {
    * @param {int} id
    * @returns {string} token
    */
-  async static generateToken (id) {
+  static async generateToken (id) {
     return jwt.sign({user_id: id}, process.env.SECRET, {expiresIn: '1d'});
   }
 }
