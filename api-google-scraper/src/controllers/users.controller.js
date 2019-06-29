@@ -1,5 +1,5 @@
 import db from '../models/index';
-import userAuthentication from '../service/user-authentication.service';
+import UserAuthentication from '../service/user-authentication.service';
 
 class UsersController {
   /**
@@ -13,20 +13,20 @@ class UsersController {
     if (!email || !password) {
       return response.status(400).send({'message': 'Some values are missing'});
     }
-    if (!userAuthentication.isValidEmail(email)) {
+    if (!UserAuthentication.isValidEmail(email)) {
       return response.status(400).send({ 'message': 'Please enter a valid email address' });
     }
 
     db.User.findOne({ where: { email: email }})
       .then(user => {
-        if (!userAuthentication.comparePassword(user.password, password)) {
+        if (!UserAuthentication.comparePassword(user.password, password)) {
           return response.status(400).send({ 'message': 'The credentials you provided is incorrect' });
         }
 
-        const token = userAuthentication.generateToken(user.id);
+        const token = UserAuthentication.generateToken(user.id);
         return response.status(200).send({ token });
       })
-      .catch(error => {
+      .catch(() => {
         return response.status(400).send({ 'message': 'The credentials you provided is incorrect' });
       });
   }
