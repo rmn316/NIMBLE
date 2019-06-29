@@ -1,5 +1,5 @@
 export default function(sequelize, DataType) {
-  const Keyword = sequelize.define('User', {
+  return sequelize.define('Keyword', {
     id: {
       type: DataType.INTEGER,
       autoIncrement: true,
@@ -31,5 +31,4 @@ export default function(sequelize, DataType) {
   }, {
     tableName: 'keywords',
   });
-  return Keyword;
 }

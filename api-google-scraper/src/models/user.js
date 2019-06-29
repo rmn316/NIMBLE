@@ -1,5 +1,5 @@
 export default function(sequelize, DataType) {
-  const User = sequelize.define('User', {
+  return sequelize.define('User', {
     id: {
       type: DataType.INTEGER,
       autoIncrement: true,
@@ -17,5 +17,4 @@ export default function(sequelize, DataType) {
     tableName: 'users',
     timestamps: false,
   });
-  return User;
 }
