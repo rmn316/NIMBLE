@@ -1,4 +1,4 @@
-import Sequelize, { Model} from 'sequelize'
+import Sequelize, { Model } from 'sequelize'
 
 class User extends Model {
 }
@@ -22,6 +22,7 @@ User.init(
   {
     modelName: 'user',
     tableName: 'users',
+    sequelize: Sequelize,
   });
 
 export default User;
