@@ -1,5 +1,3 @@
-import Sequelize  from 'sequelize';
-
 /**
  * Create user table migration
  * @param {object} queryInterface
