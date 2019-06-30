@@ -4,7 +4,7 @@ import { Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import axios from '../../axios';
 import styles from './Login.module.scss';
 
-class Login extends Component {
+export class Login extends Component {
 
   state = {
     userForm: {
