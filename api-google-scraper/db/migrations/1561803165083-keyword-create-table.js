@@ -35,6 +35,14 @@ export const up = (queryInterface, Sequelize) => {
       allowNull: false,
       type: Sequelize.TEXT,
     },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    }
   });
 };
 
