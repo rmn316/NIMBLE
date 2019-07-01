@@ -5,7 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import styles from './Toolbar.module.scss';
 
 const toolbar = (props) => (
-    <Navbar className={styles.Toolbar} fixed dark>
+    <Navbar className={styles.Toolbar} fixed="fixed" dark={true}>
       <NavbarBrand>Keyword Scraper</NavbarBrand>
       <NavigationItems {...props} />
     </Navbar>
