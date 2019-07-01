@@ -1,46 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 import { Table, Alert } from 'reactstrap';
-
-import axios from 'axios';
 
 class KeywordItems extends Component {
 
   state = {
-    keywords: [],
     error: false,
   };
 
   componentDidMount () {
-    axios.get('http://localhost:8000/keywords')
-      .then((response) => {
-        this.setState(
-          { keywords: response.data }
-        )
-      })
-      .catch (() => {
-        this.setState({ error: true });
-      })
+    this.props.onFetchKeywords('');
   }
 
   render () {
-
-    const error = this.state.error ? <Alert color="danger">No data to display</Alert> : null;
+    const error = this.props.keywords.length === 0 ? <Alert color="danger">No data to display</Alert> : null;
 
     return (
       <div>
         { error }
         <Table striped>
           <thead>
-          <tr>
-            <th>Keyword</th>
-            <th>Ad words</th>
-            <th>Links</th>
-            <th>Results</th>
-          </tr>
+            <tr>
+              <th>Keyword</th>
+              <th>Ad words</th>
+              <th>Links</th>
+              <th>Results</th>
+            </tr>
           </thead>
           <tbody>
           {
-            this.state.keywords.map(item => {
+            this.props.keywords.map(item => {
               return (
                 <tr key={item.id}>
                   <td>{item.keyword}</td>
@@ -58,4 +48,16 @@ class KeywordItems extends Component {
   }
 }
 
-export default KeywordItems;
+const mapStateToProps = (state) => {
+  return {
+    keywords: state.keyword.keywords,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchKeywords: (token) => dispatch(actions.fetchKeywords(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(KeywordItems);
