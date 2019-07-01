@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Container } from 'reactstrap';
 
-function App() {
-  return (
-    <div></div>
-  );
+class App extends Component {
+  render () {
+    return (
+      <Container />
+    )
+  }
 }
 
 export default App;
