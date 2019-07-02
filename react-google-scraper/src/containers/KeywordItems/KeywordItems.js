@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import { Table, Alert } from 'reactstrap';
 
-class KeywordItems extends Component {
-
-  state = {
-    error: false,
-  };
+export class KeywordItems extends Component {
 
   componentDidMount () {
     this.props.onFetchKeywords('');
