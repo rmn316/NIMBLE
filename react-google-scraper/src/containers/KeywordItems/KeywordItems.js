@@ -20,12 +20,16 @@ export class KeywordItems extends Component {
   }
 
   fileUploadSubmitHandler = (event) => {
+
     event.preventDefault();
-    axios.post('/keywords/upload', {
-      file: this.state.uploader.file,
-    }, {
+
+    const formData = new FormData();
+    formData.append('file', this.state.uploader.file, this.state.uploader.file.name);
+
+    axios.post('/keywords/upload',
+      formData, {
       headers: {
-        'Content-type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data'
       }
     }).then((response) => {
       this.setState({uploader: {file: {}, error: false, message: response.message}});
@@ -37,8 +41,6 @@ export class KeywordItems extends Component {
   fileUploadChangedHandler = (event) => {
 
     const file = event.target.files[0];
-
-    console.log(file);
 
     if (file === undefined) {
       this.setState({uploader: {file: null}});
