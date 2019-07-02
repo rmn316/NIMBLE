@@ -6,7 +6,7 @@ import styles from './NavigationItem.module.scss';
 
 const navigationItem = (props) => (
   <NavItem className={styles.NavItem}>
-    <NavLink to="">{props.children}</NavLink>
+    <NavLink to={props.link}>{props.children}</NavLink>
   </NavItem>
 );
 
