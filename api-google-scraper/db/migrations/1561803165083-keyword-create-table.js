@@ -23,7 +23,7 @@ export const up = (queryInterface, Sequelize) => {
     },
     links: {
       allowNull: false,
-      type: Sequelize.INTERGER,
+      type: Sequelize.INTEGER,
       defaultValue: 0,
     },
     totalResults: {
