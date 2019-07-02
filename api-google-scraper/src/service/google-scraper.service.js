@@ -30,4 +30,4 @@ class GoogleScraper {
   }
 }
 
-export default GoogleScraperService;
+export default GoogleScraper;

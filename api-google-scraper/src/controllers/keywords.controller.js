@@ -1,16 +1,21 @@
+import * as db from '../models/index';
 import GoogleScraper from '../service/google-scraper.service';
 
 class KeywordsController {
 
   static index = (request, response) => {
 
-    const data = [
-      {id: 1, keyword: "test", ad_words:3, links: 333, results: 122020202},
-      {id: 2, keyword: "test 2", ad_words:3, links: 333, results: 122020202}
-    ]
-
-    return response.status(200)
-      .json(data);
+    db.Keyword.findAll({
+        order: [
+          ['keyword', 'ASC']
+        ]
+    })
+      .then((data) => {
+        return response.status(200).json(data)
+      })
+      .catch(() => {
+        return response.status(400).json({message: "Unable to fetch keywords"});
+      })
   }
 
   /**
