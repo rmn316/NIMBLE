@@ -1,3 +1,5 @@
+import GoogleScraper from '../service/google-scraper.service';
+
 class KeywordsController {
 
   static index = (request, response) => {
@@ -17,10 +19,11 @@ class KeywordsController {
    * @returns {JSON} Response as json object.
    */
   static upload = (request, response)  => {
-    return response.status(200)
-      .json({
-        message: "processed file"
-      });
+
+    // needs to go inside a loop.
+    GoogleScraper.scrape('digital marketing').then((result) => {
+      return response.status(200).json({"body": result});
+    });
   }
 }
 
