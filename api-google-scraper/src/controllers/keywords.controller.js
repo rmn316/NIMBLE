@@ -48,13 +48,16 @@ class KeywordsController {
           GoogleScraper.scrape(keyword).then((result) => {
             // add the scrape result to the db.
             db.Keyword.create({
-              title: result.keyword,
+              title: keyword,
               adWords: result.ad_words,
               links: result.links,
               totalResults: result.results,
               source: result.html
             });
-          });
+          })
+            .catch(e => {
+              console.error(e);
+            });
         }, 30000); // wait 3 seconds per iteration
       });
     });

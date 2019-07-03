@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
-import "babel-polyfill"
+import jwt from 'jsonwebtoken';
 
 class UserAuthentication {
   /**
@@ -36,7 +35,7 @@ class UserAuthentication {
    * @param {int} id
    * @returns {string} token
    */
-  static generateToken (id) {
+  static async generateToken (id) {
     return jwt.sign({user_id: id}, process.env.JWT_SECRET, {expiresIn: '1d'});
   }
 }

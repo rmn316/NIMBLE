@@ -1,4 +1,5 @@
-import * as jwt from 'jsonwebtoken';
+import '@babel/polyfill';
+import jwt from 'jsonwebtoken';
 import models from '../models/index';
 
 const auth = {
@@ -11,7 +12,7 @@ const auth = {
     }
 
     try {
-      const decoded = await jwt.verify(token, process.env.SECRET);
+      const decoded = await jwt.verify(token, process.env.JWT_SECRET);
 
       const user = await models.User.findByPk(decoded.user_id);
 

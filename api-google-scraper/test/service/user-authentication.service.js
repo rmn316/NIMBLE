@@ -10,48 +10,36 @@ describe ('User Authentication Service', () => {
 
   beforeEach (() => {
     sandbox.restore();
-  })
+  });
 
   describe ('hashPassword', () => {
     it ('should generate a valid password hash', () => {
       sandbox.stub(bcrypt, 'hashSync').returns('aGeneratedHash');
-      UserAuthentication.hashPassword('test').then((result) => {
-        expect(result).to.equal('aGeneratedHash');
-      });
+      expect(UserAuthentication.hashPassword('test')).to.equal('aGeneratedHash');
     })
   });
 
   describe ('comparePassword', () => {
     it ('should return true when passwords match', () => {
-      sandbox.stub(bcrypt, 'compare').callsFake(() => Promise.resolve(true));
-
-      UserAuthentication.comparePassword('aGeneratedHash', 'test').then((result) => {
-        expect(result).to.equal(true);
-      });
+      sandbox.stub(bcrypt, 'compare').callsFake(() => true);
+      expect(UserAuthentication.comparePassword('aGeneratedHash', 'test')).to.equal(true);
     });
 
     it ('should return false when passwords do not match', () => {
-      sandbox.stub(bcrypt, 'compare').callsFake(() => Promise.resolve(false));
-
-      UserAuthentication.comparePassword('aGeneratedHash', 'junk').then((result) => {
-        expect(result).to.equal(false);
-      });
+      sandbox.stub(bcrypt, 'compare').callsFake(() => false);
+      expect(UserAuthentication.comparePassword('aGeneratedHash', 'junk')).to.equal(false);
     });
 
   });
 
   describe ('isValidEmail', () => {
     it ('should return true when a valid email is provided', () => {
-      UserAuthentication.isValidEmail('test@test.com').then((result) => {
-        expect(result).to.equal(true);
-      });
+      expect(UserAuthentication.isValidEmail('test@test.com')).to.equal(true);
     });
 
     it ('should return false when a invalid email is provided', () => {
-      UserAuthentication.isValidEmail('invalid.com').then((result) => {
-        expect(result).to.equal(false);
-      });
-    })
+        expect(UserAuthentication.isValidEmail('invalid.com')).to.equal(false);
+    });
   });
 
   describe ('generateToken', () => {
