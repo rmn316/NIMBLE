@@ -16,7 +16,7 @@ export class KeywordItems extends Component {
   };
 
   componentDidMount () {
-    this.props.onFetchKeywords('');
+    this.props.onFetchKeywords(this.props.token);
   }
 
   fileUploadSubmitHandler = (event) => {
@@ -29,7 +29,8 @@ export class KeywordItems extends Component {
     axios.post('/keywords/upload',
       formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'x-access-token': this.props.token,
       }
     }).then((response) => {
       this.setState({uploader: {file: {}, error: false, message: response.message}});
@@ -95,6 +96,7 @@ export class KeywordItems extends Component {
 const mapStateToProps = (state) => {
   return {
     keywords: state.keyword.keywords,
+    token: state.auth.token,
   }
 };
 

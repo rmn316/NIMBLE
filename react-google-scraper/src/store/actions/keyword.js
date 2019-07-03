@@ -39,7 +39,11 @@ export const fetchKeywordsStart = () => {
 export const fetchKeywords = (token) => {
   return dispatch => {
     dispatch(fetchKeywordsStart());
-    axios.get('/keywords')
+    axios.get('/keywords', {
+      headers: {
+        'x-access-token': token,
+      },
+    })
       .then(response => {
         dispatch(fetchKeywordsSuccess(response));
       })
