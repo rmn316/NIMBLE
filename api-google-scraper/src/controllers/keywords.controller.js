@@ -45,18 +45,16 @@ class KeywordsController {
       keywords.forEach((keyword) => {
         setTimeout(() => {
           // scrape keyword
-          GoogleScraper.scrape('digital marketing').then((result) => {
+          GoogleScraper.scrape(keyword).then((result) => {
             // add the scrape result to the db.
             db.Keyword.create({
               title: result.keyword,
               adWords: result.ad_words,
               links: result.links,
-              results: result.results,
+              totalResults: result.results,
               source: result.html
             });
           });
-
-          console.log(keyword)
         }, 30000); // wait 3 seconds per iteration
       });
     });
@@ -67,7 +65,6 @@ class KeywordsController {
         results: keywords
       });
     });
-
   }
 }
 
