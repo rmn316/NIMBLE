@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import * as actions from '../../../store/actions';
 import { Form, FormGroup, Label, Input, Button, Alert, Spinner } from 'reactstrap';
 import styles from './Login.module.scss';
@@ -45,6 +46,8 @@ export class Login extends Component {
 
   render () {
 
+    let redirect = this.props.isAuthenticated ? <Redirect to="/" /> : null;
+
     let form = (
       <Form onSubmit={this.submitHandler}>
         <Alert color="danger" isOpen={this.props.error}>{this.props.error}</Alert>
@@ -82,6 +85,7 @@ export class Login extends Component {
 
     return (
       <div className={styles.Login}>
+        { redirect }
         { form }
       </div>
     );
@@ -92,6 +96,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
   }
 }
 

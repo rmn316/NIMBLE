@@ -26,6 +26,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/logout" component={Logout} />
+          <Route path="/login" component={Login} />
           <Route path="/" exact component={KeywordItems} />
         </Switch>
       );

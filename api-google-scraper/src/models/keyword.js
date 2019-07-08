@@ -1,10 +1,5 @@
 export default function(sequelize, DataType) {
   return sequelize.define('Keyword', {
-    id: {
-      type: DataType.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     title: {
       type: DataType.STRING,
       allowNull: false,

@@ -23,8 +23,9 @@ class UsersController {
           return response.status(400).send({ 'message': 'The credentials you provided is incorrect' });
         }
 
-        const token = UserAuthentication.generateToken(user.id);
-        return response.status(200).send({ token });
+        UserAuthentication.generateToken(user.id).then(result => {
+          return response.status(200).send({ token: result });
+        });
       })
       .catch(() => {
         return response.status(400).send({ 'message': 'The credentials you provided is incorrect' });

@@ -5,7 +5,7 @@
  * @returns {*}
  */
 export const up = (queryInterface, Sequelize) => {
-  return queryInterface.createTable('User', {
+  return queryInterface.createTable('users', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -30,5 +30,5 @@ export const up = (queryInterface, Sequelize) => {
  * @returns {*}
  */
 export const down = (queryInterface, Sequelize) => {
-  return queryInterface.dropTable('User');
+  return queryInterface.dropTable('users');
 };

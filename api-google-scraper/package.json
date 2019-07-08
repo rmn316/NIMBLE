@@ -35,6 +35,9 @@
     "watch": "babel -w src/ -d dist/",
     "build": "rm -rf dist/ && babel ./src --out-dir dist/",
     "build:watch": "babel --watch ./src --out-dir ./dist",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all",
+    "rollback": "sequelize db:migrate:undo",
     "start": "babel-node -- ./dist/index.js",
     "test": "mocha --require @babel/register --recursive"
   },
