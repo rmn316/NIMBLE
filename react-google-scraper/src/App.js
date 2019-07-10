@@ -20,6 +20,7 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/" exact component={KeywordItems} />
       </Switch>
     )
     if (this.props.isAuthenticated) {
