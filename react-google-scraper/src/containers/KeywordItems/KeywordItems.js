@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import { Table, Alert } from 'reactstrap';
@@ -57,6 +58,7 @@ export class KeywordItems extends Component {
 
     return (
       <div>
+        { !this.props.isAuthenticated ? <Redirect to="/login" /> : null }
         <Uploader
           changed={(event) => this.fileUploadChangedHandler(event)}
           submit={(event) => this.fileUploadSubmitHandler(event)}
@@ -97,6 +99,7 @@ const mapStateToProps = (state) => {
   return {
     keywords: state.keyword.keywords,
     token: state.auth.token,
+    isAuthenticated: state.auth.token !== null,
   }
 };
 
