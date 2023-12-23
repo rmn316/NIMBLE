@@ -5,7 +5,7 @@
  * @returns {*}
  */
 export const up = (queryInterface, Sequelize) => {
-  return queryInterface.createTable('Keyword', {
+  return queryInterface.createTable('keywords', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -16,7 +16,7 @@ export const up = (queryInterface, Sequelize) => {
       allowNull: false,
       type: Sequelize.STRING,
     },
-    adWords: {
+    ad_words: {
       allowNull: false,
       type: Sequelize.INTEGER,
       defaultValue: 0,
@@ -26,7 +26,7 @@ export const up = (queryInterface, Sequelize) => {
       type: Sequelize.INTEGER,
       defaultValue: 0,
     },
-    totalResults: {
+    total_results: {
       allowNull: false,
       type: Sequelize.BIGINT,
       defaultValue: 0,
@@ -35,11 +35,11 @@ export const up = (queryInterface, Sequelize) => {
       allowNull: false,
       type: Sequelize.TEXT,
     },
-    updatedAt: {
+    updated_at: {
       allowNull: false,
       type: Sequelize.DATE,
     },
-    createdAt: {
+    created_at: {
       allowNull: false,
       type: Sequelize.DATE,
     }
@@ -53,5 +53,5 @@ export const up = (queryInterface, Sequelize) => {
  * @returns {*}
  */
 export const down = (queryInterface, Sequelize) => {
-  return queryInterface.dropTable('Keyword');
+  return queryInterface.dropTable('keywords');
 };

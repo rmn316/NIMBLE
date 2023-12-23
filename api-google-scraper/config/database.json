@@ -3,28 +3,27 @@
     "username": "scraper",
     "password": "scraper",
     "database": "scraper",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "port": 5432,
     "dialect": "postgres",
-    "operatorsAliases": false,
     "timezone": "utc"
   },
   "test": {
     "username": "scraper",
     "password": "scraper",
     "database": "scraper",
-    "host": "127.0.0.1",
+    "host": "localhost",
+    "port": 5432,
     "dialect": "postgres",
-    "operatorsAliases": false,
     "timezone": "utc"
   },
   "production": {
     "username": "scraper",
     "password": "scraper",
     "database": "scraper",
-    "host": "127.0.0.1",
+    "port": 5432,
+    "host": "localhost",
     "dialect": "postgres",
-    "operatorsAliases": false,
     "timezone": "utc"
   }
 }
